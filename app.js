@@ -16,7 +16,7 @@ const PORT = process.env.PORT;
 
 var blogSchema = new mongoose.Schema({
     title: String,
-    body: String,
+    bodyy: String,
     image: String,
     created: { type: Date, default: Date.now }
   });
@@ -50,7 +50,7 @@ app.get("/blogs/new", function(req, res){
 });
 
 app.post("/blogs", function(req, res) {
-  req.body.blog.body = req.sanitize(req.body.blog.body);
+  req.body.blog.bodyy = req.sanitize(req.body.blog.bodyy);
   Blog.create(req.body.blog, function(err, newBlog){
     if (err) {
       res.render("new");
@@ -85,7 +85,7 @@ app.get("/blogs/:id/edit", function(req, res){
 // UPDATE ROUTE
 
 app.put("/blogs/:id", function(req, res){
-  req.body.blog.body = req.sanitize(req.body.blog.body);
+  req.body.blog.bodyy = req.sanitize(req.body.blog.bodyy);
   Blog.findByIdAndUpdate(req.params.id, req.body.blog,function (err, updatedBlog) {
     if (err) {
       res.redirect("/blogs");
